@@ -8,12 +8,12 @@ import requests
 import logging
 import json
 import re
+import os
 
-# Set your OpenAI API key
+# Set your OpenAI API key (OPENAI_API_KEY env var takes precedence)
+api_key = os.environ.get("OPENAI_API_KEY", "YOUR_API_KEY")
 
-api_key = "YOUR_API_KEY"
-
-model = "gpt-4o-mini"
+model = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)

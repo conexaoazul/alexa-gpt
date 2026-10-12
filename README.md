@@ -255,6 +255,8 @@ lambda_handler = sb.lambda_handler()
 ### 12.
 Put your OpenAI API key that you got from your [OpenAI account](https://platform.openai.com/api-keys)
 
+If you host the Lambda yourself, you can instead set the `OPENAI_API_KEY` (and optionally `OPENAI_MODEL`) environment variables, which take precedence over the values in the code.
+
 ![openai_api_key](images/api_key.png)
 
 ### 13.

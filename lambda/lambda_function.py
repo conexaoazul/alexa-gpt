@@ -195,13 +195,13 @@ def generate_followup_questions(conversation_context, query, response, count=2):
         messages.append({"role": "user", "content": "Follow-up questions (separated by |):"})
         
         data = {
-            "model": "gpt-3.5-turbo",  # Using a faster model for this
+            "model": model,
             "messages": messages,
             "max_completion_tokens": 50,
             "temperature": 0.7
         }
         
-        response = requests.post(url, headers=headers, data=json.dumps(data), timeout=3)
+        response = requests.post(url, headers=headers, data=json.dumps(data), timeout=2)
         if response.ok:
             questions_text = response.json()['choices'][0]['message']['content'].strip()
             # Clean and split the response
@@ -255,7 +255,7 @@ def generate_gpt_response(chat_history, new_question, is_followup=False):
     }
     
     try:
-        response = requests.post(url, headers=headers, data=json.dumps(data))
+        response = requests.post(url, headers=headers, data=json.dumps(data), timeout=5)
         response_data = response.json()
         if response.ok:
             response_text = response_data['choices'][0]['message']['content']
